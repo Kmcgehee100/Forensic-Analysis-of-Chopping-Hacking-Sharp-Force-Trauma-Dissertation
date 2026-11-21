@@ -1,0 +1,511 @@
+---
+title: "Chapter 4 - Timing - Cochran-Armitage - By Tool Class - Cleaver"
+output: word_document
+date: "2026-07-15"
+---
+
+```{r}
+# Load required package
+library(DescTools)
+
+# Load data
+data <- read.csv("One Year Macro and Micro Data - Cleaver.csv")
+```
+
+```{r}
+#Macro_Edge_1_Regularity
+data$Month <- factor(data$Month,
+                     levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),
+                     ordered = TRUE)
+
+Cleaver_Macro_Edge_1_Regularity <- xtabs(
+  ~ Month + Macro_Edge_1_Regularity,
+  data = data
+)
+
+addmargins(Cleaver_Macro_Edge_1_Regularity)
+
+CochranArmitageTest(Cleaver_Macro_Edge_1_Regularity)
+```
+
+```{r}
+#Macro_Edge_2_Regularity
+data$Month <- factor(data$Month,
+                     levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),
+                     ordered = TRUE)
+
+Cleaver_Macro_Edge_2_Regularity <- xtabs(
+  ~ Month + Macro_Edge_2_Regularity,
+  data = data
+)
+
+addmargins(Cleaver_Macro_Edge_2_Regularity)
+
+CochranArmitageTest(Cleaver_Macro_Edge_2_Regularity)
+```
+
+```{r}
+#Macro_Wall_1_Regularity
+data$Month <- factor(data$Month,
+                     levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),
+                     ordered = TRUE)
+
+Cleaver_Macro_Wall_1_Regularity <- xtabs(
+  ~ Month + Macro_Wall_1_Regularity,
+  data = data
+)
+
+addmargins(Cleaver_Macro_Wall_1_Regularity)
+
+CochranArmitageTest(Cleaver_Macro_Wall_1_Regularity)
+```
+
+```{r}
+#Macro_Wall_2_Regularity
+data$Month <- factor(data$Month,
+                     levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),
+                     ordered = TRUE)
+
+Cleaver_Macro_Wall_2_Regularity <- xtabs(
+  ~ Month + Macro_Edge_1_Regularity,
+  data = data
+)
+
+addmargins(Cleaver_Macro_Wall_2_Regularity)
+
+CochranArmitageTest(Cleaver_Macro_Wall_2_Regularity)
+```
+
+```{r}
+#Macro_Floor_Regularity
+data$Month <- factor(data$Month,
+                     levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),
+                     ordered = TRUE)
+
+Cleaver_Macro_Floor_Regularity <- xtabs(
+  ~ Month + Macro_Floor_Regularity,
+  data = data
+)
+
+addmargins(Cleaver_Macro_Floor_Regularity)
+
+CochranArmitageTest(Cleaver_Macro_Floor_Regularity)
+```
+
+```{r}
+#Macro_Kerf_Transection
+data$Month <- factor(data$Month,
+                     levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),
+                     ordered = TRUE)
+
+Cleaver_Macro_Kerf_Transection <- xtabs(
+  ~ Month + Macro_Kerf_Transection,
+  data = data
+)
+
+addmargins(Cleaver_Macro_Kerf_Transection)
+
+CochranArmitageTest(Cleaver_Macro_Kerf_Transection)
+```
+
+```{r}
+#Macro_Edge_1_Chattering
+data$Month <- factor(data$Month,
+                     levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),
+                     ordered = TRUE)
+
+Cleaver_Macro_Edge_1_Chattering <- xtabs(
+  ~ Month + Macro_Edge_1_Chattering,
+  data = data
+)
+
+addmargins(Cleaver_Macro_Edge_1_Chattering)
+
+CochranArmitageTest(Cleaver_Macro_Edge_1_Chattering)
+```
+
+```{r}
+#Macro_Edge_2_Chattering
+data$Month <- factor(data$Month,
+                     levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),
+                     ordered = TRUE)
+
+Cleaver_Macro_Edge_2_Chattering <- xtabs(
+  ~ Month + Macro_Edge_1_Regularity,
+  data = data
+)
+
+addmargins(Cleaver_Macro_Edge_2_Chattering)
+
+CochranArmitageTest(Cleaver_Macro_Edge_2_Chattering)
+```
+
+```{r}
+#Macro_Edge_1_Feathering
+data$Month <- factor(data$Month,
+                     levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),
+                     ordered = TRUE)
+
+Cleaver_Macro_Edge_1_Feathering <- xtabs(
+  ~ Month + Macro_Edge_1_Feathering,
+  data = data
+)
+
+addmargins(Cleaver_Macro_Edge_1_Feathering)
+
+CochranArmitageTest(Cleaver_Macro_Edge_1_Feathering)
+```
+
+```{r}
+#Macro_Edge_2_Feathering
+data$Month <- factor(data$Month,
+                     levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),
+                     ordered = TRUE)
+
+Cleaver_Macro_Edge_2_Feathering <- xtabs(
+  ~ Month + Macro_Edge_2_Feathering,
+  data = data
+)
+
+addmargins(Cleaver_Macro_Edge_2_Feathering)
+
+CochranArmitageTest(Cleaver_Macro_Edge_2_Feathering)
+```
+
+```{r}
+#Macro_Edge_1_Flaking
+data$Month <- factor(data$Month,
+                     levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),
+                     ordered = TRUE)
+
+Cleaver_Macro_Edge_1_Flaking <- xtabs(
+  ~ Month + Macro_Edge_1_Flaking,
+  data = data
+)
+
+addmargins(Cleaver_Macro_Edge_1_Flaking)
+
+CochranArmitageTest(Cleaver_Macro_Edge_1_Flaking)
+```
+
+```{r}
+#Macro_Edge_2_Flaking
+data$Month <- factor(data$Month,
+                     levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),
+                     ordered = TRUE)
+
+Cleaver_Macro_Edge_2_Flaking <- xtabs(
+  ~ Month + Macro_Edge_2_Flaking,
+  data = data
+)
+
+addmargins(Cleaver_Macro_Edge_2_Flaking)
+
+CochranArmitageTest(Cleaver_Macro_Edge_2_Flaking)
+```
+
+```{r}
+#Macro_Edge_1_Fracturing
+data$Month <- factor(data$Month,
+                     levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),
+                     ordered = TRUE)
+
+Cleaver_Macro_Edge_1_Fracturing <- xtabs(
+  ~ Month + Macro_Edge_1_Fracturing,
+  data = data
+)
+
+addmargins(Cleaver_Macro_Edge_1_Fracturing)
+
+CochranArmitageTest(Cleaver_Macro_Edge_1_Fracturing)
+```
+
+```{r}
+#Macro_Edge_2_Fracturing
+data$Month <- factor(data$Month,
+                     levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),
+                     ordered = TRUE)
+
+Cleaver_Macro_Edge_2_Fracturing <- xtabs(
+  ~ Month + Macro_Edge_2_Fracturing,
+  data = data
+)
+
+addmargins(Cleaver_Macro_Edge_2_Fracturing)
+
+CochranArmitageTest(Cleaver_Macro_Edge_2_Fracturing)
+```
+
+```{r}
+#Macro_Edge_1_Peeling
+data$Month <- factor(data$Month,
+                     levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),
+                     ordered = TRUE)
+
+Cleaver_Macro_Edge_1_Peeling <- xtabs(
+  ~ Month + Macro_Edge_1_Peeling,
+  data = data
+)
+
+addmargins(Cleaver_Macro_Edge_1_Peeling)
+
+CochranArmitageTest(Cleaver_Macro_Edge_1_Peeling)
+```
+
+```{r}
+#Macro_Edge_2_Peeling
+data$Month <- factor(data$Month,
+                     levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),
+                     ordered = TRUE)
+
+Cleaver_Macro_Edge_2_Peeling <- xtabs(
+  ~ Month + Macro_Edge_2_Peeling,
+  data = data
+)
+
+addmargins(Cleaver_Macro_Edge_2_Peeling)
+
+CochranArmitageTest(Cleaver_Macro_Edge_2_Peeling)
+```
+
+```{r}
+#Micro_Edge_1_Regularity
+data$Month <- factor(data$Month,
+                     levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),
+                     ordered = TRUE)
+
+Cleaver_Micro_Edge_1_Regularity <- xtabs(
+  ~ Month + Micro_Edge_1_Regularity,
+  data = data
+)
+
+addmargins(Cleaver_Micro_Edge_1_Regularity)
+
+CochranArmitageTest(Cleaver_Micro_Edge_1_Regularity)
+```
+
+```{r}
+#Micro_Edge_2_Regularity
+data$Month <- factor(data$Month,
+                     levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),
+                     ordered = TRUE)
+
+Cleaver_Micro_Edge_2_Regularity <- xtabs(
+  ~ Month + Micro_Edge_2_Regularity,
+  data = data
+)
+
+addmargins(Cleaver_Micro_Edge_2_Regularity)
+
+CochranArmitageTest(Cleaver_Micro_Edge_2_Regularity)
+```
+
+```{r}
+#Micro_Wall_1_Regularity
+data$Month <- factor(data$Month,
+                     levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),
+                     ordered = TRUE)
+
+Cleaver_Micro_Wall_1_Regularity <- xtabs(
+  ~ Month + Micro_Wall_1_Regularity,
+  data = data
+)
+
+addmargins(Cleaver_Micro_Wall_1_Regularity)
+
+CochranArmitageTest(Cleaver_Micro_Wall_1_Regularity)
+```
+
+```{r}
+#Micro_Wall_2_Regularity
+data$Month <- factor(data$Month,
+                     levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),
+                     ordered = TRUE)
+
+Cleaver_Micro_Wall_2_Regularity <- xtabs(
+  ~ Month + Micro_Wall_2_Regularity,
+  data = data
+)
+
+addmargins(Cleaver_Micro_Wall_2_Regularity)
+
+CochranArmitageTest(Cleaver_Micro_Wall_2_Regularity)
+```
+
+```{r}
+#Micro_Kerf_Floor_Regularity
+data$Month <- factor(data$Month,
+                     levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),
+                     ordered = TRUE)
+
+Cleaver_Micro_Kerf_Floor_Regularity <- xtabs(
+  ~ Month + Micro_Kerf_Floor_Regularity,
+  data = data
+)
+
+addmargins(Cleaver_Micro_Kerf_Floor_Regularity)
+
+CochranArmitageTest(Cleaver_Micro_Kerf_Floor_Regularity)
+```
+
+```{r}
+#Micro_Edge_1_Uprising
+data$Month <- factor(data$Month,
+                     levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),
+                     ordered = TRUE)
+
+Cleaver_Micro_Edge_1_Uprising <- xtabs(
+  ~ Month + Micro_Edge_1_Uprising,
+  data = data
+)
+
+addmargins(Cleaver_Micro_Edge_1_Uprising)
+
+CochranArmitageTest(Cleaver_Micro_Edge_1_Uprising)
+```
+
+```{r}
+#Micro_Edge_2_Uprising
+data$Month <- factor(data$Month,
+                     levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),
+                     ordered = TRUE)
+
+Cleaver_Micro_Edge_2_Uprising <- xtabs(
+  ~ Month + Micro_Edge_2_Uprising,
+  data = data
+)
+
+addmargins(Cleaver_Micro_Edge_2_Uprising)
+
+CochranArmitageTest(Cleaver_Micro_Edge_2_Uprising)
+```
+
+```{r}
+#Micro_Edge_1_Fossae
+data$Month <- factor(data$Month,
+                     levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),
+                     ordered = TRUE)
+
+Cleaver_Micro_Edge_1_Fossae <- xtabs(
+  ~ Month + Micro_Edge_1_Fossae,
+  data = data
+)
+
+addmargins(Cleaver_Micro_Edge_1_Fossae)
+
+CochranArmitageTest(Cleaver_Micro_Edge_1_Fossae)
+```
+
+```{r}
+#Micro_Edge_2_Fossae
+data$Month <- factor(data$Month,
+                     levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),
+                     ordered = TRUE)
+
+Cleaver_Micro_Edge_2_Fossae <- xtabs(
+  ~ Month + Micro_Edge_2_Fossae,
+  data = data
+)
+
+addmargins(Cleaver_Micro_Edge_2_Fossae)
+
+CochranArmitageTest(Cleaver_Micro_Edge_2_Fossae)
+```
+
+```{r}
+#Micro_Edge_1_Microscopic_Fracturing
+data$Month <- factor(data$Month,
+                     levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),
+                     ordered = TRUE)
+
+Cleaver_Micro_Edge_1_Microscopic_Fracturing <- xtabs(
+  ~ Month + Micro_Edge_1_Microscopic_Fracturing,
+  data = data
+)
+
+addmargins(Cleaver_Micro_Edge_1_Microscopic_Fracturing)
+
+CochranArmitageTest(Cleaver_Micro_Edge_1_Microscopic_Fracturing)
+```
+
+```{r}
+#Micro_Edge_2_Microscopic_Fracturing
+data$Month <- factor(data$Month,
+                     levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),
+                     ordered = TRUE)
+
+Cleaver_Micro_Edge_2_Microscopic_Fracturing <- xtabs(
+  ~ Month + Micro_Edge_2_Microscopic_Fracturing,
+  data = data
+)
+
+addmargins(Cleaver_Micro_Edge_2_Microscopic_Fracturing)
+
+CochranArmitageTest(Cleaver_Micro_Edge_2_Microscopic_Fracturing)
+```
+
+```{r}
+#Micro_Wall_1_Flaking
+data$Month <- factor(data$Month,
+                     levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),
+                     ordered = TRUE)
+
+Cleaver_Micro_Wall_1_Flaking <- xtabs(
+  ~ Month + Micro_Wall_1_Flaking,
+  data = data
+)
+
+addmargins(Cleaver_Micro_Wall_1_Flaking)
+
+CochranArmitageTest(Cleaver_Micro_Wall_1_Flaking)
+```
+
+```{r}
+#Micro_Wall_2_Flaking
+data$Month <- factor(data$Month,
+                     levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),
+                     ordered = TRUE)
+
+Cleaver_Micro_Wall_2_Flaking <- xtabs(
+  ~ Month + Macro_Edge_1_Regularity,
+  data = data
+)
+
+addmargins(Cleaver_Micro_Wall_2_Flaking)
+
+CochranArmitageTest(Cleaver_Micro_Wall_2_Flaking)
+```
+
+```{r}
+#Micro_Wall_1_Striations
+data$Month <- factor(data$Month,
+                     levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),
+                     ordered = TRUE)
+
+Cleaver_Micro_Wall_1_Striations <- xtabs(
+  ~ Month + Micro_Wall_1_Striations,
+  data = data
+)
+
+addmargins(Cleaver_Micro_Wall_1_Striations)
+
+CochranArmitageTest(Cleaver_Micro_Wall_1_Striations)
+
+
+```
+
+```{r}
+#Micro_Wall_2_Striations
+data$Month <- factor(data$Month,
+                     levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),
+                     ordered = TRUE)
+
+Cleaver_Micro_Wall_2_Striations <- xtabs(
+  ~ Month + Micro_Wall_2_Striations,
+  data = data
+)
+
+addmargins(Cleaver_Micro_Wall_2_Striations)
+
+CochranArmitageTest(Cleaver_Micro_Wall_2_Striations)
+```

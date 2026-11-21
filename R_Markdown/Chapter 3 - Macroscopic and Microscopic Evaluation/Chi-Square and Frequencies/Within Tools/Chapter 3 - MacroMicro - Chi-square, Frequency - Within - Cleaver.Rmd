@@ -1,0 +1,384 @@
+---
+title: "Chapter 3 - Macro/Micro - Chi-square & Frequency - Within Tool Class - Cleaver"
+output:
+  word_document: default
+  html_document: default
+date: "2026-07-12"
+---
+
+```{r}
+library(DescTools)
+Macro_Micro_Data_Cleaver<-read.csv("Macro and Micro Data - Cleaver.csv", header=TRUE)
+```
+
+```{r}
+#Contingency table for chi square: Tool x Macro-Edge 1 Regularity (MacroE1R)
+table_TxMacroE1R<-xtabs(~Tool+Macro_Edge_1_Regularity, Macro_Micro_Data_Cleaver)
+addmargins(table_TxMacroE1R)
+set.seed(42) 
+chi_TxMacroE1R<-chisq.test(table_TxMacroE1R, correct = FALSE)
+chi_TxMacroE1R
+chi_TxMacroE1R[["residuals"]] 
+options(scipen=10)
+Assocs(table_TxMacroE1R)
+```
+
+```{r}
+#Contingency table for chi square: Tool x Macro-Edge 2 Regularity (MacroE2R)
+table_TxMacroE2R<-xtabs(~Tool+Macro_Edge_2_Regularity, Macro_Micro_Data_Cleaver)
+addmargins(table_TxMacroE2R)
+set.seed(42) 
+chi_TxMacroE2R<-chisq.test(table_TxMacroE2R, correct = FALSE)
+chi_TxMacroE2R
+chi_TxMacroE2R[["residuals"]] 
+options(scipen=10)
+Assocs(table_TxMacroE2R)
+```
+
+```{r}
+#Contingency table for chi square: Tool x Macro-Wall 1 Regularity (MacroW1R)
+table_TxMacroW1R<-xtabs(~Tool+Macro_Wall_1_Regularity, Macro_Micro_Data_Cleaver)
+addmargins(table_TxMacroW1R)
+set.seed(42) 
+chi_TxMacroW1R<-chisq.test(table_TxMacroW1R, correct = FALSE)
+chi_TxMacroW1R
+chi_TxMacroW1R[["residuals"]] 
+options(scipen=10)
+Assocs(table_TxMacroW1R)
+```
+
+```{r}
+#Contingency table for chi square: Tool x Macro-Wall 2 Regularity (MacroW2R)
+table_TxMacroW2R<-xtabs(~Tool+Macro_Wall_2_Regularity, Macro_Micro_Data_Cleaver)
+addmargins(table_TxMacroW2R)
+set.seed(42) 
+chi_TxMacroW2R<-chisq.test(table_TxMacroW2R, correct = FALSE)
+chi_TxMacroW2R
+chi_TxMacroW2R[["residuals"]] 
+options(scipen=10)
+Assocs(table_TxMacroW2R)
+```
+
+```{r}
+#Contingency table for chi square: Tool x Macro-Floor Regularity (MacroFR)
+table_TxMacroFR<-xtabs(~Tool+Macro_Floor_Regularity, Macro_Micro_Data_Cleaver)
+addmargins(table_TxMacroFR)
+set.seed(42) 
+chi_TxMacroFR<-chisq.test(table_TxMacroFR, correct = FALSE)
+chi_TxMacroFR
+chi_TxMacroFR[["residuals"]] 
+options(scipen=10)
+Assocs(table_TxMacroFR)
+```
+
+```{r}
+#Contingency table for chi square: Tool x Macro-Kerf Transection (MacroKT)
+table_TxMacroKT<-xtabs(~Tool+Macro_Kerf_Transection, Macro_Micro_Data_Cleaver)
+addmargins(table_TxMacroKT)
+set.seed(42) 
+chi_TxMacroKT<-chisq.test(table_TxMacroKT, correct = FALSE)
+chi_TxMacroKT
+chi_TxMacroKT[["residuals"]] 
+options(scipen=10)
+Assocs(table_TxMacroKT) 
+```
+
+```{r}
+#Contingency table for chi square: Tool  x Macro-Edge 1 Chattering  (MacroE1Chat)
+table_TxMacroE1Chat<-xtabs(~Tool+Macro_Edge_1_Chattering, Macro_Micro_Data_Cleaver)
+addmargins(table_TxMacroE1Chat)
+set.seed(42) 
+chi_TxMacroE1Chat<-chisq.test(table_TxMacroE1Chat, correct = FALSE)
+chi_TxMacroE1Chat
+chi_TxMacroE1Chat[["residuals"]] 
+options(scipen=10)
+Assocs(table_TxMacroE1Chat)
+```
+
+```{r}
+#Contingency table for chi square: Tool x Macro-Edge 2 Chattering (MacroE2Chat)
+table_TxMacroE2Chat<-xtabs(~Tool+Macro_Edge_2_Chattering, Macro_Micro_Data_Cleaver)
+addmargins(table_TxMacroE2Chat)
+set.seed(42) 
+chi_TxMacroE2Chat<-chisq.test(table_TxMacroE2Chat, correct = FALSE)
+chi_TxMacroE2Chat
+chi_TxMacroE2Chat[["residuals"]] 
+options(scipen=10)
+Assocs(table_TxMacroE2Chat)
+```
+
+```{r}
+#Contingency table for chi square: Tool x Macro-Edge 1 Feathering (MacroE1Feather)
+table_TxMacroE1Feather<-xtabs(~Tool+Macro_Edge_1_Feathering, Macro_Micro_Data_Cleaver)
+addmargins(table_TxMacroE1Feather)
+set.seed(42) 
+chi_TxMacroE1Feather<-chisq.test(table_TxMacroE1Feather, correct = FALSE)
+chi_TxMacroE1Feather
+chi_TxMacroE1Feather[["residuals"]] 
+options(scipen=10)
+Assocs(table_TxMacroE1Feather)
+```
+
+```{r}
+#Contingency table for chi square: Tool x Macro-Edge 2 Feathering (MacroE2Feather)
+table_TxMacroE2Feather<-xtabs(~Tool+Macro_Edge_2_Feathering, Macro_Micro_Data_Cleaver)
+addmargins(table_TxMacroE2Feather)
+set.seed(42) 
+chi_TxMacroE2Feather<-chisq.test(table_TxMacroE2Feather, correct = FALSE)
+chi_TxMacroE2Feather
+chi_TxMacroE2Feather[["residuals"]] 
+options(scipen=10)
+Assocs(table_TxMacroE2Feather)
+```
+
+```{r}
+#Contingency table for chi square: Tool x Macro-Edge 1 Flaking (MacroE1Flake)
+table_TxMacroE1Flake<-xtabs(~Tool+Macro_Edge_1_Flaking, Macro_Micro_Data_Cleaver)
+addmargins(table_TxMacroE1Flake)
+set.seed(42) 
+chi_TxMacroE1Flake<-chisq.test(table_TxMacroE1Flake, correct = FALSE)
+chi_TxMacroE1Flake
+chi_TxMacroE1Flake[["residuals"]] 
+options(scipen=10)
+Assocs(table_TxMacroE1Flake)
+```
+
+```{r}
+#Contingency table for chi square: Tool x Macro-Edge 2 Flaking (MacroE2Flake)
+table_TxMacroE2Flake<-xtabs(~Tool+Macro_Edge_2_Flaking, Macro_Micro_Data_Cleaver)
+addmargins(table_TxMacroE2Flake)
+set.seed(42) 
+chi_TxMacroE2Flake<-chisq.test(table_TxMacroE2Flake, correct = FALSE)
+chi_TxMacroE2Flake
+chi_TxMacroE2Flake[["residuals"]] 
+options(scipen=10)
+Assocs(table_TxMacroE2Flake)
+```
+
+```{r}
+#Contingency table for chi square: Tool x Macro-Edge 1 Fracturing (MacroE1Fracture)
+table_TxMacroE1Fracture<-xtabs(~Tool+Macro_Edge_1_Fracturing, Macro_Micro_Data_Cleaver)
+addmargins(table_TxMacroE1Fracture)
+set.seed(42) 
+chi_TxMacroE1Fracture<-chisq.test(table_TxMacroE1Fracture, correct = FALSE)
+chi_TxMacroE1Fracture
+chi_TxMacroE1Fracture[["residuals"]] 
+options(scipen=10)
+Assocs(table_TxMacroE1Fracture)
+```
+
+```{r}
+#Contingency table for chi square: Tool x Macro-Edge 2 Fracturing (MacroE2Fracture)
+table_TxMacroE2Fracture<-xtabs(~Tool+Macro_Edge_2_Fracturing, Macro_Micro_Data_Cleaver)
+addmargins(table_TxMacroE2Fracture)
+set.seed(42) 
+chi_TxMacroE2Fracture<-chisq.test(table_TxMacroE2Fracture, correct = FALSE)
+chi_TxMacroE2Fracture
+chi_TxMacroE2Fracture[["residuals"]] 
+options(scipen=10)
+Assocs(table_TxMacroE2Fracture)
+```
+
+```{r}
+#Contingency table for chi square: Tool x Macro-Edge 1 Peeling (MacroE1Peel)
+table_TxMacroE1Peel<-xtabs(~Tool+Macro_Edge_1_Peeling, Macro_Micro_Data_Cleaver)
+addmargins(table_TxMacroE1Peel)
+set.seed(42) 
+chi_TxMacroE1Peel<-chisq.test(table_TxMacroE1Peel, correct = FALSE)
+chi_TxMacroE1Peel
+chi_TxMacroE1Peel[["residuals"]] 
+options(scipen=10)
+Assocs(table_TxMacroE1Peel)
+```
+
+```{r}
+#Contingency table for chi square: Tool x Macro-Edge 2 Peeling (MacroE2Peel)
+table_TxMacroE2Peel<-xtabs(~Tool+Macro_Edge_2_Peeling, Macro_Micro_Data_Cleaver)
+addmargins(table_TxMacroE2Peel)
+set.seed(42) 
+chi_TxMacroE2Peel<-chisq.test(table_TxMacroE2Peel, correct = FALSE)
+chi_TxMacroE2Peel
+chi_TxMacroE2Peel[["residuals"]] 
+options(scipen=10)
+Assocs(table_TxMacroE2Peel)
+```
+
+```{r}
+#Contingency table for chi square: Tool x Micro-Edge 1 Regularity (MicroE1R)
+table_TxMicroE1R<-xtabs(~Tool+Micro_Edge_1_Regularity, Macro_Micro_Data_Cleaver)
+addmargins(table_TxMicroE1R)
+set.seed(42) 
+chi_TxMicroE1R<-chisq.test(table_TxMicroE1R, correct = FALSE)
+chi_TxMicroE1R
+chi_TxMicroE1R[["residuals"]] 
+options(scipen=10)
+Assocs(table_TxMicroE1R)
+```
+
+```{r}
+#Contingency table for chi square: Tool x Micro-Edge 2 Regularity (MicroE2R)
+table_TxMicroE2R<-xtabs(~Tool+Micro_Edge_2_Regularity, Macro_Micro_Data_Cleaver)
+addmargins(table_TxMicroE2R)
+set.seed(42) 
+chi_TxMicroE2R<-chisq.test(table_TxMicroE2R, correct = FALSE)
+chi_TxMicroE2R
+chi_TxMicroE2R[["residuals"]] 
+options(scipen=10)
+Assocs(table_TxMicroE2R)
+```
+
+```{r}
+#Contingency table for chi square: Tool x Micro-Wall 1 Regularity (MicroW1R)
+table_TxMicroW1R<-xtabs(~Tool+Micro_Wall_1_Regularity, Macro_Micro_Data_Cleaver)
+addmargins(table_TxMicroW1R)
+set.seed(42) 
+chi_TxMicroW1R<-chisq.test(table_TxMicroW1R, correct = FALSE)
+chi_TxMicroW1R
+chi_TxMicroW1R[["residuals"]] 
+options(scipen=10)
+Assocs(table_TxMicroW1R)
+```
+
+```{r}
+#Contingency table for chi square: Tool x Micro-Wall 2 Regularity (MicroW2R)
+table_TxMicroW2R<-xtabs(~Tool+Micro_Wall_2_Regularity, Macro_Micro_Data_Cleaver)
+addmargins(table_TxMicroW2R)
+set.seed(42) 
+chi_TxMicroW2R<-chisq.test(table_TxMicroW2R, correct = FALSE)
+chi_TxMicroW2R
+chi_TxMicroW2R[["residuals"]] 
+options(scipen=10)
+Assocs(table_TxMicroW2R)
+```
+
+```{r}
+#Contingency table for chi square: Tool x Micro- Kerf Floor Regularity (MicroKFR)
+table_TxMicroKFR<-xtabs(~Tool+Micro_Kerf_Floor_Regularity, Macro_Micro_Data_Cleaver)
+addmargins(table_TxMicroKFR)
+set.seed(42) 
+chi_TxMicroKFR<-chisq.test(table_TxMicroKFR, correct = FALSE)
+chi_TxMicroKFR
+chi_TxMicroKFR[["residuals"]] 
+options(scipen=10)
+Assocs(table_TxMicroKFR)
+```
+
+```{r}
+#Contingency table for chi square: Tool x Micro-Edge 1 Uprising (MicroE1Uprising)
+table_TxMicroE1Uprising<-xtabs(~Tool+Micro_Edge_1_Uprising, Macro_Micro_Data_Cleaver)
+addmargins(table_TxMicroE1Uprising)
+set.seed(42) 
+chi_TxMicroE1Uprising<-chisq.test(table_TxMicroE1Uprising, correct = FALSE)
+chi_TxMicroE1Uprising
+chi_TxMicroE1Uprising[["residuals"]] 
+options(scipen=10)
+Assocs(table_TxMicroE1Uprising)
+```
+
+```{r}
+#Contingency table for chi square: Tool x Micro-Edge 2 Uprising (MicroE2Uprising)
+table_TxMicroE2Uprising<-xtabs(~Tool+Micro_Edge_2_Uprising, Macro_Micro_Data_Cleaver)
+addmargins(table_TxMicroE2Uprising)
+set.seed(42) 
+chi_TxMicroE2Uprising<-chisq.test(table_TxMicroE2Uprising, correct = FALSE)
+chi_TxMicroE2Uprising
+chi_TxMicroE2Uprising[["residuals"]] 
+options(scipen=10)
+Assocs(table_TxMicroE2Uprising)
+```
+
+```{r}
+#Contingency table for chi square: Tool x Micro-Edge 1 Fossae (MicroE1Fossae)
+table_TxMicroE1Fossae<-xtabs(~Tool+Micro_Edge_1_Fossae, Macro_Micro_Data_Cleaver)
+addmargins(table_TxMicroE1Fossae)
+set.seed(42) 
+chi_TxMicroE1Fossae<-chisq.test(table_TxMicroE1Fossae, correct = FALSE)
+chi_TxMicroE1Fossae
+chi_TxMicroE1Fossae[["residuals"]] 
+options(scipen=10)
+Assocs(table_TxMicroE1Fossae)
+```
+
+```{r}
+#Contingency table for chi square: Tool x Micro-Edge 2 Fossae (MicroE2Fossae)
+table_TxMicroE2Fossae<-xtabs(~Tool+Micro_Edge_2_Fossae, Macro_Micro_Data_Cleaver)
+addmargins(table_TxMicroE2Fossae)
+set.seed(42) 
+chi_TxMicroE2Fossae<-chisq.test(table_TxMicroE2Fossae, correct = FALSE)
+chi_TxMicroE2Fossae
+chi_TxMicroE2Fossae[["residuals"]] 
+options(scipen=10)
+Assocs(table_TxMicroE2Fossae)
+```
+
+```{r}
+#Contingency table for chi square: Tool x Micro-Edge 1 Microscopic Fracturing (MicroE1Fracture)
+table_TxMicroE1Fracture<-xtabs(~Tool+Micro_Edge_1_Microscopic_Fracturing, Macro_Micro_Data_Cleaver)
+addmargins(table_TxMicroE1Fracture)
+set.seed(42) 
+chi_TxMicroE1Fracture<-chisq.test(table_TxMicroE1Fracture, correct = FALSE)
+chi_TxMicroE1Fracture
+chi_TxMicroE1Fracture[["residuals"]] 
+options(scipen=10)
+Assocs(table_TxMicroE1Fracture)
+```
+
+```{r}
+#Contingency table for chi square: Tool x Micro-Edge 2 Microscopic Fracturing (MicroE2Fracture)
+table_TxMicroE2Fracture<-xtabs(~Tool+Micro_Edge_2_Microscopic_Fracturing, Macro_Micro_Data_Cleaver)
+addmargins(table_TxMicroE2Fracture)
+set.seed(42) 
+chi_TxMicroE2Fracture<-chisq.test(table_TxMicroE2Fracture, correct = FALSE)
+chi_TxMicroE2Fracture
+chi_TxMicroE2Fracture[["residuals"]] 
+options(scipen=10)
+Assocs(table_TxMicroE2Fracture)
+```
+
+```{r}
+#Contingency table for chi square: Tool x Micro-Wall 1 Flaking (MicroW1Flaking)
+table_TxMicroW1Flaking<-xtabs(~Tool+Micro_Wall_1_Flaking, Macro_Micro_Data_Cleaver)
+addmargins(table_TxMicroW1Flaking)
+set.seed(42) 
+chi_TxMicroW1Flaking<-chisq.test(table_TxMicroW1Flaking, correct = FALSE)
+chi_TxMicroW1Flaking
+chi_TxMicroW1Flaking[["residuals"]] 
+options(scipen=10)
+Assocs(table_TxMicroW1Flaking)
+```
+
+```{r}
+#Contingency table for chi square: Tool x Micro-Wall 2 Flaking (MicroW1Flaking)
+table_TxMicroW2Flaking<-xtabs(~Tool+Micro_Wall_2_Flaking, Macro_Micro_Data_Cleaver)
+addmargins(table_TxMicroW2Flaking)
+set.seed(42) 
+chi_TxMicroW2Flaking<-chisq.test(table_TxMicroW2Flaking, correct = FALSE)
+chi_TxMicroW2Flaking
+chi_TxMicroW2Flaking[["residuals"]] 
+options(scipen=10)
+Assocs(table_TxMicroW2Flaking)
+```
+
+```{r}
+#Contingency table for chi square: Tool x Micro-Wall 1 Striations (MicroW1Striations)
+table_TxMicroW1Striations<-xtabs(~Tool+Micro_Wall_1_Striations, Macro_Micro_Data_Cleaver)
+addmargins(table_TxMicroW1Striations)
+set.seed(42) 
+chi_TxMicroW1Striations<-chisq.test(table_TxMicroW1Striations, correct = FALSE)
+chi_TxMicroW1Striations
+chi_TxMicroW1Striations[["residuals"]] 
+options(scipen=10)
+Assocs(table_TxMicroW1Striations)
+```
+
+```{r}
+#Contingency table for chi square: Tool x Micro-Wall 2 Striations (MicroW2Striations)
+table_TxMicroW2Striations<-xtabs(~Tool+Micro_Wall_2_Striations, Macro_Micro_Data_Cleaver)
+addmargins(table_TxMicroW2Striations)
+set.seed(42) 
+chi_TxMicroW2Striations<-chisq.test(table_TxMicroW2Striations, correct = FALSE)
+chi_TxMicroW2Striations
+chi_TxMicroW2Striations[["residuals"]] 
+options(scipen=10)
+Assocs(table_TxMicroW2Striations)
+```

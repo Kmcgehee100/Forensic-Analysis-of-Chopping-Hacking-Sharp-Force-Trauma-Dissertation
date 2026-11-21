@@ -1,0 +1,386 @@
+---
+title: "Chapter 3 - MacroMicro - MCA - Within Tool Class - NAs Removed"
+output: word_document
+date: "2026-07-15"
+---
+
+```{r}
+# Load packages
+library(FactoMineR)
+library(factoextra)
+
+#Load dataset
+macro_micro_na_removed <- read.csv("Macro and Micro Data - Removed NAs.csv")
+
+```
+
+## R Markdown
+```{r}
+# Subset to Axe 1 and Axe 2 only
+Axe_data <- macro_micro_na_removed[
+  macro_micro_na_removed$Tool %in% c("Axe 1", "Axe 2"), 
+]
+
+# Select active macro/micro variables
+Axe_active_vars <- Axe_data[, c(
+  "Macro_Kerf_Transection",
+  "Macro_Edge_1_Regularity",
+  "Macro_Edge_2_Regularity",
+  "Macro_Wall_1_Regularity",
+  "Macro_Wall_2_Regularity",
+  "Macro_Floor_Regularity",
+  "Macro_Edge_1_Chattering",
+  "Macro_Edge_2_Chattering",
+  "Macro_Edge_1_Feathering",
+  "Macro_Edge_2_Feathering",
+  "Macro_Edge_1_Flaking",
+  "Macro_Edge_2_Flaking",
+  "Macro_Edge_1_Fracturing",
+  "Macro_Edge_2_Fracturing",
+  "Macro_Edge_1_Peeling",
+  "Macro_Edge_2_Peeling",
+  "Micro_Kerf_Floor_Regularity",
+  "Micro_Edge_1_Regularity",
+  "Micro_Edge_2_Regularity",
+  "Micro_Wall_1_Regularity",
+  "Micro_Wall_2_Regularity",
+  "Micro_Edge_1_Microscopic_Fracturing",
+  "Micro_Edge_2_Microscopic_Fracturing",
+  "Micro_Edge_1_Fossae",
+  "Micro_Edge_2_Fossae",
+  "Micro_Edge_1_Uprising",
+  "Micro_Edge_2_Uprising",
+  "Micro_Wall_1_Flaking",
+  "Micro_Wall_2_Flaking",
+  "Micro_Wall_1_Striations",
+  "Micro_Wall_2_Striations"
+)]
+
+# Convert to factors
+Axe_active_vars[] <- lapply(Axe_active_vars, as.factor)
+
+# Run MCA
+mca_Axe <- MCA(Axe_active_vars, graph = FALSE)
+
+# View eigenvalues
+eig_values_na_removed <- get_eigenvalue(mca_Axe)
+print(eig_values_na_removed)
+
+# Plot individuals colored by tool
+fviz_mca_ind(
+  mca_Axe,
+  label = "none",
+  habillage = Axe_data$Tool,
+  addEllipses = TRUE,
+  ellipse.type = "confidence",
+  repel = TRUE
+)
+```
+
+```{r}
+# Subset to Carving Knife 1 and Carving Knife 2 only
+Carving_Knife_data <- macro_micro_na_removed[
+  macro_micro_na_removed$Tool %in% c("Carving Knife 1", "Carving Knife 2"), 
+]
+
+# Select active macro/micro variables
+Carving_Knife_active_vars <- Carving_Knife_data[, c(
+  "Macro_Kerf_Transection",
+  "Macro_Edge_1_Regularity",
+  "Macro_Edge_2_Regularity",
+  "Macro_Wall_1_Regularity",
+  "Macro_Wall_2_Regularity",
+  "Macro_Floor_Regularity",
+  "Macro_Edge_1_Chattering",
+  "Macro_Edge_2_Chattering",
+  "Macro_Edge_1_Feathering",
+  "Macro_Edge_2_Feathering",
+  "Macro_Edge_1_Flaking",
+  "Macro_Edge_2_Flaking",
+  "Macro_Edge_1_Fracturing",
+  "Macro_Edge_2_Fracturing",
+  "Macro_Edge_1_Peeling",
+  "Macro_Edge_2_Peeling",
+  "Micro_Kerf_Floor_Regularity",
+  "Micro_Edge_1_Regularity",
+  "Micro_Edge_2_Regularity",
+  "Micro_Wall_1_Regularity",
+  "Micro_Wall_2_Regularity",
+  "Micro_Edge_1_Microscopic_Fracturing",
+  "Micro_Edge_2_Microscopic_Fracturing",
+  "Micro_Edge_1_Fossae",
+  "Micro_Edge_2_Fossae",
+  "Micro_Edge_1_Uprising",
+  "Micro_Edge_2_Uprising",
+  "Micro_Wall_1_Flaking",
+  "Micro_Wall_2_Flaking",
+  "Micro_Wall_1_Striations",
+  "Micro_Wall_2_Striations"
+)]
+
+# Convert to factors
+Carving_Knife_active_vars[] <- lapply(Carving_Knife_active_vars, as.factor)
+
+# Run MCA
+mca_Carving_Knife <- MCA(Carving_Knife_active_vars, graph = FALSE)
+
+# View eigenvalues
+eig_values_na_removed <- get_eigenvalue(mca_Carving_Knife)
+print(eig_values_na_removed)
+
+# Plot individuals colored by tool
+fviz_mca_ind(
+  mca_Carving_Knife,
+  label = "none",
+  habillage = Carving_Knife_data$Tool,
+  addEllipses = TRUE,
+  ellipse.type = "confidence",
+  repel = TRUE
+)
+```
+```{r}
+# Subset to Cleaver 1 and Cleaver 2 only
+Cleaver_data <- macro_micro_na_removed[
+  macro_micro_na_removed$Tool %in% c("Cleaver 1", "Cleaver 2"), 
+]
+
+# Select active macro/micro variables
+Cleaver_active_vars <- Cleaver_data[, c(
+  "Macro_Kerf_Transection",
+  "Macro_Edge_1_Regularity",
+  "Macro_Edge_2_Regularity",
+  "Macro_Wall_1_Regularity",
+  "Macro_Wall_2_Regularity",
+  "Macro_Floor_Regularity",
+  "Macro_Edge_1_Chattering",
+  "Macro_Edge_2_Chattering",
+  "Macro_Edge_1_Feathering",
+  "Macro_Edge_2_Feathering",
+  "Macro_Edge_1_Flaking",
+  "Macro_Edge_2_Flaking",
+  "Macro_Edge_1_Fracturing",
+  "Macro_Edge_2_Fracturing",
+  "Macro_Edge_1_Peeling",
+  "Macro_Edge_2_Peeling",
+  "Micro_Kerf_Floor_Regularity",
+  "Micro_Edge_1_Regularity",
+  "Micro_Edge_2_Regularity",
+  "Micro_Wall_1_Regularity",
+  "Micro_Wall_2_Regularity",
+  "Micro_Edge_1_Microscopic_Fracturing",
+  "Micro_Edge_2_Microscopic_Fracturing",
+  "Micro_Edge_1_Fossae",
+  "Micro_Edge_2_Fossae",
+  "Micro_Edge_1_Uprising",
+  "Micro_Edge_2_Uprising",
+  "Micro_Wall_1_Flaking",
+  "Micro_Wall_2_Flaking",
+  "Micro_Wall_1_Striations",
+  "Micro_Wall_2_Striations"
+)]
+
+# Convert to factors
+Cleaver_active_vars[] <- lapply(Cleaver_active_vars, as.factor)
+
+# Run MCA
+mca_Cleaver<- MCA(Cleaver_active_vars, graph = FALSE)
+
+# View eigenvalues
+eig_values_na_removed <- get_eigenvalue(mca_Cleaver)
+print(eig_values_na_removed)
+
+# Plot individuals colored by tool
+fviz_mca_ind(
+  mca_Cleaver,
+  label = "none",
+  habillage = Cleaver_data$Tool,
+  addEllipses = TRUE,
+  ellipse.type = "confidence",
+  repel = TRUE
+)
+```
+```{r}
+# Subset to Hatchet 1 and Hatchet 2 only
+Hatchet_data <- macro_micro_na_removed[
+  macro_micro_na_removed$Tool %in% c("Hatchet 1", "Hatchet 2"), 
+]
+
+# Select active macro/micro variables
+Hatchet_active_vars <- Hatchet_data[, c(
+  "Macro_Kerf_Transection",
+  "Macro_Edge_1_Regularity",
+  "Macro_Edge_2_Regularity",
+  "Macro_Wall_1_Regularity",
+  "Macro_Wall_2_Regularity",
+  "Macro_Floor_Regularity",
+  "Macro_Edge_1_Chattering",
+  "Macro_Edge_2_Chattering",
+  "Macro_Edge_1_Feathering",
+  "Macro_Edge_2_Feathering",
+  "Macro_Edge_1_Flaking",
+  "Macro_Edge_2_Flaking",
+  "Macro_Edge_1_Fracturing",
+  "Macro_Edge_2_Fracturing",
+  "Macro_Edge_1_Peeling",
+  "Macro_Edge_2_Peeling",
+  "Micro_Kerf_Floor_Regularity",
+  "Micro_Edge_1_Regularity",
+  "Micro_Edge_2_Regularity",
+  "Micro_Wall_1_Regularity",
+  "Micro_Wall_2_Regularity",
+  "Micro_Edge_1_Microscopic_Fracturing",
+  "Micro_Edge_2_Microscopic_Fracturing",
+  "Micro_Edge_1_Fossae",
+  "Micro_Edge_2_Fossae",
+  "Micro_Edge_1_Uprising",
+  "Micro_Edge_2_Uprising",
+  "Micro_Wall_1_Flaking",
+  "Micro_Wall_2_Flaking",
+  "Micro_Wall_1_Striations",
+  "Micro_Wall_2_Striations"
+)]
+
+# Convert to factors
+Hatchet_active_vars[] <- lapply(Hatchet_active_vars, as.factor)
+
+# Run MCA
+mca_Hatchet<- MCA(Hatchet_active_vars, graph = FALSE)
+
+# View eigenvalues
+eig_values_na_removed <- get_eigenvalue(mca_Hatchet)
+print(eig_values_na_removed)
+
+# Plot individuals colored by tool
+fviz_mca_ind(
+  mca_Hatchet,
+  label = "none",
+  habillage = Hatchet_data$Tool,
+  addEllipses = TRUE,
+  ellipse.type = "confidence",
+  repel = TRUE
+)
+```
+```{r}
+# Subset to Machete 1 and Machete 2 only
+Machete_data <- macro_micro_na_removed[
+  macro_micro_na_removed$Tool %in% c("Machete 1", "Machete 2"), 
+]
+
+# Select active macro/micro variables
+Machete_active_vars <- Machete_data[, c(
+  "Macro_Kerf_Transection",
+  "Macro_Edge_1_Regularity",
+  "Macro_Edge_2_Regularity",
+  "Macro_Wall_1_Regularity",
+  "Macro_Wall_2_Regularity",
+  "Macro_Floor_Regularity",
+  "Macro_Edge_1_Chattering",
+  "Macro_Edge_2_Chattering",
+  "Macro_Edge_1_Feathering",
+  "Macro_Edge_2_Feathering",
+  "Macro_Edge_1_Flaking",
+  "Macro_Edge_2_Flaking",
+  "Macro_Edge_1_Fracturing",
+  "Macro_Edge_2_Fracturing",
+  "Macro_Edge_1_Peeling",
+  "Macro_Edge_2_Peeling",
+  "Micro_Kerf_Floor_Regularity",
+  "Micro_Edge_1_Regularity",
+  "Micro_Edge_2_Regularity",
+  "Micro_Wall_1_Regularity",
+  "Micro_Wall_2_Regularity",
+  "Micro_Edge_1_Microscopic_Fracturing",
+  "Micro_Edge_2_Microscopic_Fracturing",
+  "Micro_Edge_1_Fossae",
+  "Micro_Edge_2_Fossae",
+  "Micro_Edge_1_Uprising",
+  "Micro_Edge_2_Uprising",
+  "Micro_Wall_1_Flaking",
+  "Micro_Wall_2_Flaking",
+  "Micro_Wall_1_Striations",
+  "Micro_Wall_2_Striations"
+)]
+
+# Convert to factors
+Machete_active_vars[] <- lapply(Machete_active_vars, as.factor)
+
+# Run MCA
+mca_Machete<- MCA(Machete_active_vars, graph = FALSE)
+
+# View eigenvalues
+eig_values_na_removed <- get_eigenvalue(mca_Machete)
+print(eig_values_na_removed)
+
+# Plot individuals colored by tool
+fviz_mca_ind(
+  mca_Machete,
+  label = "none",
+  habillage = Machete_data$Tool,
+  addEllipses = TRUE,
+  ellipse.type = "confidence",
+  repel = TRUE
+)
+```
+```{r}
+# Subset to Sword 1 and Sword 2 only
+Sword_data <- macro_micro_na_removed[
+  macro_micro_na_removed$Tool %in% c("Sword 1", "Sword 2"), 
+]
+
+# Select active macro/micro variables
+Sword_active_vars <- Sword_data[, c(
+  "Macro_Kerf_Transection",
+  "Macro_Edge_1_Regularity",
+  "Macro_Edge_2_Regularity",
+  "Macro_Wall_1_Regularity",
+  "Macro_Wall_2_Regularity",
+  "Macro_Floor_Regularity",
+  "Macro_Edge_1_Chattering",
+  "Macro_Edge_2_Chattering",
+  "Macro_Edge_1_Feathering",
+  "Macro_Edge_2_Feathering",
+  "Macro_Edge_1_Flaking",
+  "Macro_Edge_2_Flaking",
+  "Macro_Edge_1_Fracturing",
+  "Macro_Edge_2_Fracturing",
+  "Macro_Edge_1_Peeling",
+  "Macro_Edge_2_Peeling",
+  "Micro_Kerf_Floor_Regularity",
+  "Micro_Edge_1_Regularity",
+  "Micro_Edge_2_Regularity",
+  "Micro_Wall_1_Regularity",
+  "Micro_Wall_2_Regularity",
+  "Micro_Edge_1_Microscopic_Fracturing",
+  "Micro_Edge_2_Microscopic_Fracturing",
+  "Micro_Edge_1_Fossae",
+  "Micro_Edge_2_Fossae",
+  "Micro_Edge_1_Uprising",
+  "Micro_Edge_2_Uprising",
+  "Micro_Wall_1_Flaking",
+  "Micro_Wall_2_Flaking",
+  "Micro_Wall_1_Striations",
+  "Micro_Wall_2_Striations"
+)]
+
+# Convert to factors
+Sword_active_vars[] <- lapply(Sword_active_vars, as.factor)
+
+# Run MCA
+mca_Sword<- MCA(Sword_active_vars, graph = FALSE)
+
+# View eigenvalues
+eig_values_na_removed <- get_eigenvalue(mca_Sword)
+print(eig_values_na_removed)
+
+# Plot individuals colored by tool
+fviz_mca_ind(
+  mca_Sword,
+  label = "none",
+  habillage = Sword_data$Tool,
+  addEllipses = TRUE,
+  ellipse.type = "confidence",
+  repel = TRUE
+)
+```
+
+

@@ -1,0 +1,77 @@
+---
+title: "Chapter 5 - Burning - MCA - 30 Minutes"
+output: word_document
+date: "`r Sys.Date()`"
+---
+
+```{r}
+# Load packages
+library(FactoMineR)
+library(factoextra)
+
+#Load dataset
+Thirty_Minutes <- read.csv("Burning Macro and Micro Data - 30 Minutes.csv")
+
+```
+
+```{r}
+# Make sure all variables are treated as factors
+Thirty_Minutes[] <- lapply(Thirty_Minutes, as.factor)
+
+# Select only macro and micro characteristics as active MCA variables
+active_vars <- Thirty_Minutes[, c(
+  "Macro_Kerf_Transection",
+  "Macro_Edge_1_Regularity",
+  "Macro_Edge_2_Regularity",
+  "Macro_Wall_1_Regularity",
+  "Macro_Wall_2_Regularity",
+  "Macro_Floor_Regularity",
+  "Macro_Edge_1_Chattering",
+  "Macro_Edge_2_Chattering",
+  "Macro_Edge_1_Feathering",
+  "Macro_Edge_2_Feathering",
+  "Macro_Edge_1_Flaking",
+  "Macro_Edge_2_Flaking",
+  "Macro_Edge_1_Fracturing",
+  "Macro_Edge_2_Fracturing",
+  "Macro_Edge_1_Peeling",
+  "Macro_Edge_2_Peeling",
+  "Micro_Kerf_Floor_Regularity",
+  "Micro_Edge_1_Regularity",
+  "Micro_Edge_2_Regularity",
+  "Micro_Wall_1_Regularity",
+  "Micro_Wall_2_Regularity",
+  "Micro_Edge_1_Microscopic_Fracturing",
+  "Micro_Edge_2_Microscopic_Fracturing",
+  "Micro_Edge_1_Fossae",
+  "Micro_Edge_2_Fossae",
+  "Micro_Edge_1_Uprising",
+  "Micro_Edge_2_Uprising",
+  "Micro_Wall_1_Flaking",
+  "Micro_Wall_2_Flaking",
+  "Micro_Wall_1_Striations",
+  "Micro_Wall_2_Striations"
+)]
+
+# Make sure active variables are factors
+active_vars[] <- lapply(active_vars, as.factor)
+
+# Run MCA
+MCA_Thirty_Minutes <- MCA(active_vars, graph = FALSE)
+
+# View eigenvalues
+eig_values_na_removed <- get_eigenvalue(MCA_Thirty_Minutes)
+print(eig_values_na_removed)
+```
+
+```{r}
+# Individuals colored by Tool Class
+fviz_mca_ind(
+  MCA_Thirty_Minutes,
+  label = "none",
+  habillage = Thirty_Minutes$Tool,
+  addEllipses = TRUE,
+  ellipse.type = "confidence",
+  repel = TRUE
+)
+```

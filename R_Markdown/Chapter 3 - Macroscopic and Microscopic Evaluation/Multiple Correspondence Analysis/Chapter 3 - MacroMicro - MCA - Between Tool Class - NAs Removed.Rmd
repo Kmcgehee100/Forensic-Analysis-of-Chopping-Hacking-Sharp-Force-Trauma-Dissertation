@@ -1,0 +1,90 @@
+---
+title: "Chapter 3 - MacroMicro - MCA - Between Tool Class - NAs Removed"
+output: word_document
+date: "2026-07-15"
+---
+
+```{r}
+# Load packages
+library(FactoMineR)
+library(factoextra)
+
+#Load dataset
+macro_micro_na_removed <- read.csv("Macro and Micro Data - Removed NAs.csv")
+
+```
+
+```{r}
+# Make sure all variables are treated as factors
+macro_micro_na_removed[] <- lapply(macro_micro_na_removed, as.factor)
+
+# Select only macro and micro characteristics as active MCA variables
+active_vars <- macro_micro_na_removed[, c(
+  "Macro_Kerf_Transection",
+  "Macro_Edge_1_Regularity",
+  "Macro_Edge_2_Regularity",
+  "Macro_Wall_1_Regularity",
+  "Macro_Wall_2_Regularity",
+  "Macro_Floor_Regularity",
+  "Macro_Edge_1_Chattering",
+  "Macro_Edge_2_Chattering",
+  "Macro_Edge_1_Feathering",
+  "Macro_Edge_2_Feathering",
+  "Macro_Edge_1_Flaking",
+  "Macro_Edge_2_Flaking",
+  "Macro_Edge_1_Fracturing",
+  "Macro_Edge_2_Fracturing",
+  "Macro_Edge_1_Peeling",
+  "Macro_Edge_2_Peeling",
+  "Micro_Kerf_Floor_Regularity",
+  "Micro_Edge_1_Regularity",
+  "Micro_Edge_2_Regularity",
+  "Micro_Wall_1_Regularity",
+  "Micro_Wall_2_Regularity",
+  "Micro_Edge_1_Microscopic_Fracturing",
+  "Micro_Edge_2_Microscopic_Fracturing",
+  "Micro_Edge_1_Fossae",
+  "Micro_Edge_2_Fossae",
+  "Micro_Edge_1_Uprising",
+  "Micro_Edge_2_Uprising",
+  "Micro_Wall_1_Flaking",
+  "Micro_Wall_2_Flaking",
+  "Micro_Wall_1_Striations",
+  "Micro_Wall_2_Striations"
+)]
+
+# Make sure active variables are factors
+active_vars[] <- lapply(active_vars, as.factor)
+
+# Run MCA
+mca_na_removed <- MCA(active_vars, graph = FALSE)
+
+# View eigenvalues
+eig_values_na_removed <- get_eigenvalue(mca_na_removed)
+print(eig_values_na_removed)
+```
+```{r}
+# Individuals colored by Tool Class
+fviz_mca_ind(
+  mca_na_removed,
+  label = "none",
+  habillage = macro_micro_na_removed$Tool,
+  addEllipses = TRUE,
+  ellipse.type = "confidence",
+  repel = TRUE
+)
+```
+```{r}
+# Individuals colored by Tool Class
+fviz_mca_ind(
+  mca_na_removed,
+  label = "none",
+  habillage = macro_micro_na_removed$Tool_Class,
+  addEllipses = TRUE,
+  ellipse.type = "confidence",
+  repel = TRUE
+)
+```
+
+
+

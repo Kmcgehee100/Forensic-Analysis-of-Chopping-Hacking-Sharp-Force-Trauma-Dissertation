@@ -1,0 +1,513 @@
+---
+title: "Chapter 5 - Burning - Cochran-Armitage - By Tool Class - Cleaver"
+output: word_document
+date: "2026-07-14"
+---
+
+```{r}
+# Load required package
+library(DescTools)
+
+# Load data
+data <- read.csv("Burning Macro and Micro Data - Cleaver.csv")
+```
+
+
+```{r}
+#Macro_Edge_1_Regularity
+data$Time <- factor(data$Time,
+                    levels = c(30, 45, 60, 75, 90),
+                    ordered = TRUE)
+
+CLeaver_Macro_Edge_1_Regularity <- xtabs(
+  ~ Time + Macro_Edge_1_Regularity,
+  data = data
+)
+
+addmargins(CLeaver_Macro_Edge_1_Regularity)
+
+CochranArmitageTest(CLeaver_Macro_Edge_1_Regularity)
+```
+
+```{r}
+#Macro_Edge_2_Regularity
+data$Time <- factor(data$Time,
+                    levels = c(30, 45, 60, 75, 90),
+                    ordered = TRUE)
+
+CLeaver_Macro_Edge_2_Regularity <- xtabs(
+  ~ Time + Macro_Edge_2_Regularity,
+  data = data
+)
+
+addmargins(CLeaver_Macro_Edge_2_Regularity)
+
+CochranArmitageTest(CLeaver_Macro_Edge_2_Regularity)
+```
+
+```{r}
+#Macro_Wall_1_Regularity
+data$Time <- factor(data$Time,
+                    levels = c(30, 45, 60, 75, 90),
+                    ordered = TRUE)
+
+CLeaver_Macro_Wall_1_Regularity <- xtabs(
+  ~ Time + Macro_Wall_1_Regularity,
+  data = data
+)
+
+addmargins(CLeaver_Macro_Wall_1_Regularity)
+
+CochranArmitageTest(CLeaver_Macro_Wall_1_Regularity)
+```
+
+```{r}
+#Macro_Wall_2_Regularity
+data$Time <- factor(data$Time,
+                    levels = c(30, 45, 60, 75, 90),
+                    ordered = TRUE)
+
+CLeaver_Macro_Wall_2_Regularity <- xtabs(
+  ~ Time + Macro_Edge_1_Regularity,
+  data = data
+)
+
+addmargins(CLeaver_Macro_Wall_2_Regularity)
+
+CochranArmitageTest(CLeaver_Macro_Wall_2_Regularity)
+```
+
+```{r}
+#Macro_Floor_Regularity
+data$Time <- factor(data$Time,
+                    levels = c(30, 45, 60, 75, 90),
+                    ordered = TRUE)
+
+CLeaver_Macro_Floor_Regularity <- xtabs(
+  ~ Time + Macro_Floor_Regularity,
+  data = data
+)
+
+addmargins(CLeaver_Macro_Floor_Regularity)
+
+CochranArmitageTest(CLeaver_Macro_Floor_Regularity)
+```
+
+```{r}
+#Macro_Kerf_Transection
+data$Time <- factor(data$Time,
+                    levels = c(30, 45, 60, 75, 90),
+                    ordered = TRUE)
+
+CLeaver_Macro_Kerf_Transection <- xtabs(
+  ~ Time + Macro_Kerf_Transection,
+  data = data
+)
+
+addmargins(CLeaver_Macro_Kerf_Transection)
+
+CochranArmitageTest(CLeaver_Macro_Kerf_Transection)
+```
+
+```{r}
+#Macro_Edge_1_Chattering
+data$Time <- factor(data$Time,
+                    levels = c(30, 45, 60, 75, 90),
+                    ordered = TRUE)
+
+CLeaver_Macro_Edge_1_Chattering <- xtabs(
+  ~ Time + Macro_Edge_1_Chattering,
+  data = data
+)
+
+addmargins(CLeaver_Macro_Edge_1_Chattering)
+
+CochranArmitageTest(CLeaver_Macro_Edge_1_Chattering)
+```
+
+```{r}
+#Macro_Edge_2_Chattering
+data$Time <- factor(data$Time,
+                    levels = c(30, 45, 60, 75, 90),
+                    ordered = TRUE)
+
+CLeaver_Macro_Edge_2_Chattering <- xtabs(
+  ~ Time + Macro_Edge_1_Regularity,
+  data = data
+)
+
+addmargins(CLeaver_Macro_Edge_2_Chattering)
+
+CochranArmitageTest(CLeaver_Macro_Edge_2_Chattering)
+```
+
+```{r}
+#Macro_Edge_1_Feathering
+data$Time <- factor(data$Time,
+                    levels = c(30, 45, 60, 75, 90),
+                    ordered = TRUE)
+
+CLeaver_Macro_Edge_1_Feathering <- xtabs(
+  ~ Time + Macro_Edge_1_Feathering,
+  data = data
+)
+
+addmargins(CLeaver_Macro_Edge_1_Feathering)
+
+CochranArmitageTest(CLeaver_Macro_Edge_1_Feathering)
+```
+
+```{r}
+#Macro_Edge_2_Feathering
+data$Time <- factor(data$Time,
+                    levels = c(30, 45, 60, 75, 90),
+                    ordered = TRUE)
+
+CLeaver_Macro_Edge_2_Feathering <- xtabs(
+  ~ Time + Macro_Edge_2_Feathering,
+  data = data
+)
+
+addmargins(CLeaver_Macro_Edge_2_Feathering)
+
+CochranArmitageTest(CLeaver_Macro_Edge_2_Feathering)
+```
+
+```{r}
+#Macro_Edge_1_Flaking
+data$Time <- factor(data$Time,
+                    levels = c(30, 45, 60, 75, 90),
+                    ordered = TRUE)
+
+CLeaver_Macro_Edge_1_Flaking <- xtabs(
+  ~ Time + Macro_Edge_1_Flaking,
+  data = data
+)
+
+addmargins(CLeaver_Macro_Edge_1_Flaking)
+
+CochranArmitageTest(CLeaver_Macro_Edge_1_Flaking)
+```
+
+```{r}
+#Macro_Edge_2_Flaking
+data$Time <- factor(data$Time,
+                    levels = c(30, 45, 60, 75, 90),
+                    ordered = TRUE)
+
+CLeaver_Macro_Edge_2_Flaking <- xtabs(
+  ~ Time + Macro_Edge_2_Flaking,
+  data = data
+)
+
+addmargins(CLeaver_Macro_Edge_2_Flaking)
+
+CochranArmitageTest(CLeaver_Macro_Edge_2_Flaking)
+```
+
+```{r}
+#Macro_Edge_1_Fracturing
+data$Time <- factor(data$Time,
+                    levels = c(30, 45, 60, 75, 90),
+                    ordered = TRUE)
+
+CLeaver_Macro_Edge_1_Fracturing <- xtabs(
+  ~ Time + Macro_Edge_1_Fracturing,
+  data = data
+)
+
+addmargins(CLeaver_Macro_Edge_1_Fracturing)
+
+CochranArmitageTest(CLeaver_Macro_Edge_1_Fracturing)
+```
+
+```{r}
+#Macro_Edge_2_Fracturing
+data$Time <- factor(data$Time,
+                    levels = c(30, 45, 60, 75, 90),
+                    ordered = TRUE)
+
+CLeaver_Macro_Edge_2_Fracturing <- xtabs(
+  ~ Time + Macro_Edge_2_Fracturing,
+  data = data
+)
+
+addmargins(CLeaver_Macro_Edge_2_Fracturing)
+
+CochranArmitageTest(CLeaver_Macro_Edge_2_Fracturing)
+```
+
+```{r}
+#Macro_Edge_1_Peeling
+data$Time <- factor(data$Time,
+                    levels = c(30, 45, 60, 75, 90),
+                    ordered = TRUE)
+
+CLeaver_Macro_Edge_1_Peeling <- xtabs(
+  ~ Time + Macro_Edge_1_Peeling,
+  data = data
+)
+
+addmargins(CLeaver_Macro_Edge_1_Peeling)
+
+CochranArmitageTest(CLeaver_Macro_Edge_1_Peeling)
+```
+
+```{r}
+#Macro_Edge_2_Peeling
+data$Time <- factor(data$Time,
+                    levels = c(30, 45, 60, 75, 90),
+                    ordered = TRUE)
+
+CLeaver_Macro_Edge_2_Peeling <- xtabs(
+  ~ Time + Macro_Edge_2_Peeling,
+  data = data
+)
+
+addmargins(CLeaver_Macro_Edge_2_Peeling)
+
+CochranArmitageTest(CLeaver_Macro_Edge_2_Peeling)
+```
+
+```{r}
+#Micro_Edge_1_Regularity
+data$Time <- factor(data$Time,
+                    levels = c(30, 45, 60, 75, 90),
+                    ordered = TRUE)
+
+CLeaver_Micro_Edge_1_Regularity <- xtabs(
+  ~ Time + Micro_Edge_1_Regularity,
+  data = data
+)
+
+addmargins(CLeaver_Micro_Edge_1_Regularity)
+
+CochranArmitageTest(CLeaver_Micro_Edge_1_Regularity)
+```
+
+```{r}
+#Micro_Edge_2_Regularity
+data$Time <- factor(data$Time,
+                    levels = c(30, 45, 60, 75, 90),
+                    ordered = TRUE)
+
+CLeaver_Micro_Edge_2_Regularity <- xtabs(
+  ~ Time + Micro_Edge_2_Regularity,
+  data = data
+)
+
+addmargins(CLeaver_Micro_Edge_2_Regularity)
+
+CochranArmitageTest(CLeaver_Micro_Edge_2_Regularity)
+```
+
+```{r}
+#Micro_Wall_1_Regularity
+data$Time <- factor(data$Time,
+                    levels = c(30, 45, 60, 75, 90),
+                    ordered = TRUE)
+
+CLeaver_Micro_Wall_1_Regularity <- xtabs(
+  ~ Time + Micro_Wall_1_Regularity,
+  data = data
+)
+
+addmargins(CLeaver_Micro_Wall_1_Regularity)
+
+CochranArmitageTest(CLeaver_Micro_Wall_1_Regularity)
+```
+
+```{r}
+#Micro_Wall_2_Regularity
+data$Time <- factor(data$Time,
+                    levels = c(30, 45, 60, 75, 90),
+                    ordered = TRUE)
+
+CLeaver_Micro_Wall_2_Regularity <- xtabs(
+  ~ Time + Micro_Wall_2_Regularity,
+  data = data
+)
+
+addmargins(CLeaver_Micro_Wall_2_Regularity)
+
+CochranArmitageTest(CLeaver_Micro_Wall_2_Regularity)
+```
+
+```{r}
+#Micro_Kerf_Floor_Regularity
+data$Time <- factor(data$Time,
+                    levels = c(30, 45, 60, 75, 90),
+                    ordered = TRUE)
+
+CLeaver_Micro_Kerf_Floor_Regularity <- xtabs(
+  ~ Time + Micro_Kerf_Floor_Regularity,
+  data = data
+)
+
+addmargins(CLeaver_Micro_Kerf_Floor_Regularity)
+
+#CochranArmitageTest(CLeaver_Micro_Kerf_Floor_Regularity)
+#Cochran-Armitage test for trend must be used with rx2-table
+```
+
+```{r}
+#Micro_Edge_1_Uprising
+data$Time <- factor(data$Time,
+                    levels = c(30, 45, 60, 75, 90),
+                    ordered = TRUE)
+
+CLeaver_Micro_Edge_1_Uprising <- xtabs(
+  ~ Time + Micro_Edge_1_Uprising,
+  data = data
+)
+
+addmargins(CLeaver_Micro_Edge_1_Uprising)
+
+CochranArmitageTest(CLeaver_Micro_Edge_1_Uprising)
+```
+
+```{r}
+#Micro_Edge_2_Uprising
+data$Time <- factor(data$Time,
+                    levels = c(30, 45, 60, 75, 90),
+                    ordered = TRUE)
+
+CLeaver_Micro_Edge_2_Uprising <- xtabs(
+  ~ Time + Micro_Edge_2_Uprising,
+  data = data
+)
+
+addmargins(CLeaver_Micro_Edge_2_Uprising)
+
+CochranArmitageTest(CLeaver_Micro_Edge_2_Uprising)
+```
+
+```{r}
+#Micro_Edge_1_Fossae
+data$Time <- factor(data$Time,
+                    levels = c(30, 45, 60, 75, 90),
+                    ordered = TRUE)
+
+CLeaver_Micro_Edge_1_Fossae <- xtabs(
+  ~ Time + Micro_Edge_1_Fossae,
+  data = data
+)
+
+addmargins(CLeaver_Micro_Edge_1_Fossae)
+
+CochranArmitageTest(CLeaver_Micro_Edge_1_Fossae)
+```
+
+```{r}
+#Micro_Edge_2_Fossae
+data$Time <- factor(data$Time,
+                    levels = c(30, 45, 60, 75, 90),
+                    ordered = TRUE)
+
+CLeaver_Micro_Edge_2_Fossae <- xtabs(
+  ~ Time + Micro_Edge_2_Fossae,
+  data = data
+)
+
+addmargins(CLeaver_Micro_Edge_2_Fossae)
+
+CochranArmitageTest(CLeaver_Micro_Edge_2_Fossae)
+```
+
+```{r}
+#Micro_Edge_1_Microscopic_Fracturing
+data$Time <- factor(data$Time,
+                    levels = c(30, 45, 60, 75, 90),
+                    ordered = TRUE)
+
+CLeaver_Micro_Edge_1_Microscopic_Fracturing <- xtabs(
+  ~ Time + Micro_Edge_1_Microscopic_Fracturing,
+  data = data
+)
+
+addmargins(CLeaver_Micro_Edge_1_Microscopic_Fracturing)
+
+CochranArmitageTest(CLeaver_Micro_Edge_1_Microscopic_Fracturing)
+```
+
+```{r}
+#Micro_Edge_2_Microscopic_Fracturing
+data$Time <- factor(data$Time,
+                    levels = c(30, 45, 60, 75, 90),
+                    ordered = TRUE)
+
+CLeaver_Micro_Edge_2_Microscopic_Fracturing <- xtabs(
+  ~ Time + Micro_Edge_2_Microscopic_Fracturing,
+  data = data
+)
+
+addmargins(CLeaver_Micro_Edge_2_Microscopic_Fracturing)
+
+CochranArmitageTest(CLeaver_Micro_Edge_2_Microscopic_Fracturing)
+```
+
+```{r}
+#Micro_Wall_1_Flaking
+data$Time <- factor(data$Time,
+                    levels = c(30, 45, 60, 75, 90),
+                    ordered = TRUE)
+
+CLeaver_Micro_Wall_1_Flaking <- xtabs(
+  ~ Time + Micro_Wall_1_Flaking,
+  data = data
+)
+
+addmargins(CLeaver_Micro_Wall_1_Flaking)
+
+CochranArmitageTest(CLeaver_Micro_Wall_1_Flaking)
+```
+
+```{r}
+#Micro_Wall_2_Flaking
+data$Time <- factor(data$Time,
+                    levels = c(30, 45, 60, 75, 90),
+                    ordered = TRUE)
+
+CLeaver_Micro_Wall_2_Flaking <- xtabs(
+  ~ Time + Macro_Edge_1_Regularity,
+  data = data
+)
+
+addmargins(CLeaver_Micro_Wall_2_Flaking)
+
+CochranArmitageTest(CLeaver_Micro_Wall_2_Flaking)
+```
+
+```{r}
+#Micro_Wall_1_Striations
+data$Time <- factor(data$Time,
+                    levels = c(30, 45, 60, 75, 90),
+                    ordered = TRUE)
+
+CLeaver_Micro_Wall_1_Striations <- xtabs(
+  ~ Time + Micro_Wall_1_Striations,
+  data = data
+)
+
+addmargins(CLeaver_Micro_Wall_1_Striations)
+
+#CochranArmitageTest(CLeaver_Micro_Wall_1_Striations)
+#Cochran-Armitage test for trend must be used with rx2-table
+```
+
+```{r}
+#Micro_Wall_2_Striations
+data$Time <- factor(data$Time,
+                    levels = c(30, 45, 60, 75, 90),
+                    ordered = TRUE)
+
+CLeaver_Micro_Wall_2_Striations <- xtabs(
+  ~ Time + Micro_Wall_2_Striations,
+  data = data
+)
+
+addmargins(CLeaver_Micro_Wall_2_Striations)
+
+#CochranArmitageTest(CLeaver_Micro_Wall_2_Striations)
+#Cochran-Armitage test for trend must be used with rx2-table
+```

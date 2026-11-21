@@ -1,0 +1,210 @@
+---
+title: "Chapter 4 - Timing - Multinomial Logistic Regression - Month 2 - Micro Data"
+output: word_document
+date: "`r Sys.Date()`"
+---
+
+```{r}
+# Packages
+library(caret)
+library(glmnet)
+library(dplyr)
+
+```
+
+```{r}
+# Read data
+Month_2_Micro_Data <- read.csv("One Year Macro and Micro Data - Month 2 - Micro.csv",
+                 stringsAsFactors = FALSE)
+```
+
+```{r}
+# Set outcome
+Month_2_Micro_Data$Tool <- as.factor(Month_2_Micro_Data$Tool)
+
+# Remove rows with missing data
+lasso_data_complete <- na.omit(Month_2_Micro_Data)
+
+# Check how many rows remain
+nrow(lasso_data_complete)
+```
+#rows with missing macro/micro observations were excluded.
+
+```{r}
+# Separate outcome and predictors
+y <- lasso_data_complete$Tool
+
+x_raw <- lasso_data_complete %>%
+  select(-Tool)
+
+# Check near-zero variance variables
+nzv_metrics <- nearZeroVar(
+  x_raw,
+  freqCut = 95/5,
+  uniqueCut = 10,
+  saveMetrics = TRUE
+)
+
+nzv_metrics
+
+# See which variables are flagged
+nzv_metrics[nzv_metrics$nzv == TRUE, ]
+
+# Remove near-zero variance predictors
+nzv_vars <- rownames(nzv_metrics[nzv_metrics$nzv == TRUE, ])
+
+x_filtered <- x_raw %>%
+  select(-all_of(nzv_vars))
+```
+
+```{r}
+# Dummy-code categorical predictors
+dummy_model <- dummyVars(~ ., data = x_filtered, fullRank = TRUE)
+
+x <- predict(dummy_model, newdata = x_filtered)
+
+# Make sure x is a matrix
+x <- as.matrix(x)
+```
+
+```{r}
+set.seed(42)
+
+cv_lasso <- cv.glmnet(
+  x = x,
+  y = y,
+  family = "multinomial",
+  alpha = 1,
+  type.measure = "class",
+  nfolds = 10,
+  standardize = FALSE
+)
+
+# Plot cross-validation curve
+plot(cv_lasso)
+
+# Best lambda
+cv_lasso$lambda.min
+
+# More conservative lambda
+cv_lasso$lambda.1se
+```
+```{r}
+# Coefficients at lambda.min
+coef_min <- coef(cv_lasso, s = "lambda.min")
+
+# Coefficients at lambda.1se
+coef_1se <- coef(cv_lasso, s = "lambda.1se")
+```
+
+```{r}
+# Function to pull non-zero coefficients by class
+get_selected_vars <- function(coef_object) {
+  selected <- lapply(coef_object, function(class_coef) {
+    temp <- as.matrix(class_coef)
+    rownames(temp)[temp[, 1] != 0]
+  })
+  
+  selected <- lapply(selected, function(vars) {
+    vars[vars != "(Intercept)"]
+  })
+  
+  return(selected)
+}
+
+selected_min <- get_selected_vars(coef_min)
+selected_1se <- get_selected_vars(coef_1se)
+
+selected_min
+selected_1se
+```
+
+```{r}
+# Classification accuracy for lambda.min and lambda.1se
+
+# Predicted classes for lambda.min
+pred_min <- predict(
+  cv_lasso,
+  newx = x,
+  s = "lambda.min",
+  type = "class"
+)
+
+# Predicted classes for lambda.1se
+pred_1se <- predict(
+  cv_lasso,
+  newx = x,
+  s = "lambda.1se",
+  type = "class"
+)
+
+# Convert predictions to factors with the same levels as your outcome
+pred_min <- factor(pred_min[, 1], levels = levels(y))
+pred_1se <- factor(pred_1se[, 1], levels = levels(y))
+
+# Calculate classification accuracy
+accuracy_min <- mean(pred_min == y)
+accuracy_1se <- mean(pred_1se == y)
+
+# Overall accuracy results
+accuracy_min
+accuracy_1se
+```
+
+```{r}
+# Function for accuracy by tool type
+accuracy_by_tool <- function(actual, predicted) {
+  
+  results <- data.frame(
+    Tool = levels(actual),
+    Correct = NA,
+    Total = NA,
+    Accuracy = NA
+  )
+  
+  for (i in seq_along(levels(actual))) {
+    
+    tool <- levels(actual)[i]
+    
+    tool_rows <- actual == tool
+    
+    results$Correct[i] <- sum(predicted[tool_rows] == actual[tool_rows])
+    results$Total[i] <- sum(tool_rows)
+    results$Accuracy[i] <- results$Correct[i] / results$Total[i]
+  }
+  
+  return(results)
+}
+```
+
+```{r}
+# Accuracy by tool type for lambda.min
+accuracy_min <- accuracy_by_tool(
+  actual = y,
+  predicted = pred_min
+)
+
+accuracy_min
+
+# Accuracy by tool type for lambda.1se
+accuracy_1se <- accuracy_by_tool(
+  actual = y,
+  predicted = pred_1se
+)
+
+accuracy_1se
+```
+
+```{r}
+# Confusion matrix for lambda.min
+confusionMatrix(
+  data = pred_min,
+  reference = y
+)
+
+# Confusion matrix for lambda.1se
+confusionMatrix(
+  data = pred_1se,
+  reference = y
+)
+```

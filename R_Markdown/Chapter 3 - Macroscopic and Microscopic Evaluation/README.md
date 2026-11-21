@@ -1,0 +1,1 @@
+The NA-removed dataset was used for multiple correspondence analysis (MCA). Rows containing missing values for the variables included in the analysis were excluded to ensure that only complete observations were utilized.

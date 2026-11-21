@@ -1,0 +1,3 @@
+The NA-removed dataset was used for multiple correspondence analysis (MCA) and multinomial logistic regression (see the corresponding multinomial logistic regression R Markdown file for code). Rows containing missing values for the variables included in these analyses were excluded to ensure that only complete observations were utilized.
+
+The combined dataset was created for Cochran-Armitage trend analyses, for which the regularity variable was recoded into two categories (Regular and Altered) to produce a binary outcome. Observations coded as mixed were grouped with irregular observations in the Altered category because mixed marks contained both regular and irregular characteristics and therefore could not be classified as fully regular.
